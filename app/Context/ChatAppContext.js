@@ -7,13 +7,13 @@ import { CheckIfWalletConnected,connectWallet,connectingWithContract } from "../
 
 export const ChatAppConect = React.createContext();
 
-export const ChatAppProvider = ({childer}) => {
+export const ChatAppProvider = ({children}) => {
 
     const title="Hey Welcome to blockchain Chat App";
 
     return(
         <ChatAppConect.Provider value={{title}}>
-            {Children}
+            {children}
         </ChatAppConect.Provider>
 
     );
