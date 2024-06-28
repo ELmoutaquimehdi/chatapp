@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ChatAppProvider } from './Context/ChatAppContext'
+import { NavBar } from './Components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ChatAppProvider>
+          <NavBar/>
+          {children}
+        </ChatAppProvider>
+        </body>
     </html>
   )
 }
