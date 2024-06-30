@@ -1,6 +1,8 @@
-import React from 'react'
+"use client"
+import React,{useState,useContext,} from 'react'
+import Image from 'next/image';
 
-const Model = () => {
+const Model = ({openModel,title,head,info,smallInfo,images,functionName}) => {
   return (
     <div>Model</div>
   )

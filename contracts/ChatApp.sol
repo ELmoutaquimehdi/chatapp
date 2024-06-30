@@ -60,19 +60,19 @@ contract ChatApp{
         require(checkUserExist(friend_key),"User is not registered");
         require(msg.sender != friend_key,"Users cannot add themselves");
         require(checkAlreadyFriends(msg.sender , friend_key)==false, "these users are already friends");
-
         _addFriend(msg.sender, friend_key, name);
         _addFriend(friend_key ,msg.sender, userList[msg.sender].name);
 
     }
 
     function checkAlreadyFriends(address pubkey1 , address pubkey2) internal view returns(bool){
+        // to minimise the number of iterations search in the user that have least friend
         if(userList[pubkey1].friendList.length > userList[pubkey2].friendList.length){
             address tmp  =  pubkey1;
             pubkey1      =  pubkey2;
             pubkey2      =  tmp;
         }
-
+        // find if pubkey2 is friend of pubkey1
         for(uint256 i=0 ; i<userList[pubkey1].friendList.length; i++){
             if(userList[pubkey1].friendList[i].pubkey==pubkey2) return true;
         }
@@ -85,7 +85,7 @@ contract ChatApp{
         userList[me].friendList.push(newFriend);
     }
 
-    //GET MY FRIEND
+    //GET MY FRIENDS
 
     function getMyFriendList() external view returns (friend[] memory){
         return userList[msg.sender].friendList;
