@@ -22,6 +22,7 @@ export const CheckIfWalletConnected = async () => {
     }
 };
 
+
 // Connecter le portefeuille
 export const connectWallet = async () => {
     try {
